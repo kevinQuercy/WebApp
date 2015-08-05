@@ -1,12 +1,10 @@
 package com.ipst.modele;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import com.ipst.daos.DAOCamion;
-import com.ipst.daos.DAOConteneur;
 import com.ipst.daos.DAOFactory;
 import com.ipst.daos.DAOHistorique;
 import com.ipst.daos.DAOIlot;

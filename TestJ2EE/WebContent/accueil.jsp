@@ -9,8 +9,7 @@
 <body>
 	<h1>Menu</h1>
         <a href="ajouterCamion.jsp">Gérer les Camions</a>
-        <a href="connexion?action=1">Liste des ilots</a>
-        <a href="planification.jsp">Planification</a>
-        <a href="ilotMap.jsp">Carte des ilots</a>
+        <a href="planification.jsp">Planifier collecte</a>
+        <a href="connexion?action=1">Carte des ilots</a>
 </body>
 </html>

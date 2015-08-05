@@ -3,7 +3,6 @@ package com.ipst.testServlet;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ipst.actions.ActionListeCamions;
-import com.ipst.modele.Camion;
+import com.ipst.actions.ActionsListeIlots;
+import com.ipst.modele.Conteneur;
+import com.ipst.modele.Ilot;
 
 /**
  * Servlet implementation class MaServlet
@@ -71,21 +71,34 @@ public class MaServlet extends HttpServlet {
 		     		   }
 		     		
 		     		 dispatcher.forward(request, response);*/
-		        	 ActionListeCamions ac = new ActionListeCamions();
-		        	 List<Camion> liste = ac.executer();
-			         for(Camion c : liste){
-			        	 System.out.println("ID Camion: " + c.get_id());
-			        	 System.out.println("Poids max: " + c.get_poidsmax());
-			        	 System.out.println("Volume max: " + c.get_volumemax());
-			        	 System.out.println("Type déchet: " + c.get_Typedechets_id());
-			        	 System.out.println("disponible: " + c.get_disponible());
+		        	 ActionsListeIlots ac = new ActionsListeIlots();
+		        	 List<Conteneur> listeC = null;
+		        	 List<Ilot> liste = ac.executer();
+			         for(Ilot i : liste){
+			        	 System.out.println("ID Ilot: " + i.get_id());
+			        	 System.out.println("Adresse: " + i.get_adresse());
+			        	 System.out.println("Code Postal: " + i.get_codepostal());
+			        	 System.out.println("Ville: " + i.get_ville());
+			        	 System.out.println("Longitude: " + i.get_longitude());
+			        	 System.out.println("Latitude: " + i.get_latitude());
+			        	 System.out.println("Contact: " + i.get_Contact_id());
+			        	 listeC = i.get_conteneurs();
+			        	 for(Conteneur co : listeC){
+			        		 System.out.println("ID conteneur: " + co.get_id());
+			        		 System.out.println("Volume max: " + co.get_volumemax());
+			        		 System.out.println("Dernier Volume: " + co.get_lastvolume());
+			        		 System.out.println("Dernier poids: " + co.get_lastpoids());
+			        		 System.out.println("Dernière MAJ: " + co.get_lastupdate());
+			        		 System.out.println("Iloy id: " + co.get_Ilot_id());
+			        		 System.out.println("Type déchet id: " + co.get_TypeDechets_id());
+			        	 }
 			        	 
 			         }
 			         
 			         request.setAttribute("liste", liste);
 			         //dispatcher = getServletContext().getRequestDispatcher("/ListeIlots.jsp");
-			         this.getServletContext().getRequestDispatcher("/ListeIlots.jsp").forward(request, response);
-			         //dispatcher.forward(request, response); 
+			         this.getServletContext().getRequestDispatcher("/ilotMap.jsp").forward(request, response);
+			         //dispatcher.forward(request, response);
 		         }
 		             break;
 		             

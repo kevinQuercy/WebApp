@@ -8,7 +8,8 @@ public class Ilot implements Serializable{
 	/**
 	 * 
 	 */
-	private long id;
+	private static final long serialVersionUID = 1L;
+	private int id;
 	private String adresse;
 	private int codepostal;
 	private String ville;
@@ -20,7 +21,7 @@ public class Ilot implements Serializable{
 	public Ilot(){
 		conteneurs= new ArrayList<Conteneur>();
 	}
-	public long get_id() {
+	public int get_id() {
 		return this.id;
 	}
 	public String get_adresse() {
@@ -44,7 +45,7 @@ public class Ilot implements Serializable{
 	public List<Conteneur> get_conteneurs() {
 		return this.conteneurs;
 	}
-	public void set_id(long a) {
+	public void set_id(int a) {
 		this.id=a;
 	}
 	public void set_adresse(String a) {
